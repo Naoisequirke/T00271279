@@ -14,7 +14,19 @@ public class PhysicsScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+            rb.AddExplosionForce(300, transform.position + new Vector3(0,-1,0), 2);
+
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            rb.AddExplosionForce(300, transform.position + new Vector3(1, 0, 0), 2);
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            rb.AddExplosionForce(300, transform.position + new Vector3(-1, 0, 0), 2);
+
         if (Input.GetKeyDown(KeyCode.UpArrow))
-            rb.AddExplosionForce(150, transform.position + new Vector3(0,-1,0), 2);
+            rb.AddExplosionForce(300, transform.position + new Vector3(0, -1, -1), 2);
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+            rb.AddExplosionForce(300, transform.position + new Vector3(0, 0, 1), 2);
     }
 }
