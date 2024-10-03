@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -47,6 +48,17 @@ public class Movement : MonoBehaviour
             transform.position -= transform.right * Time.deltaTime;
             animator.SetBool("isRunning", true);
         }
-
+        
+       
+        
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("ouch");
+        Football_Script myFootball = collision.gameObject.GetComponent<Football_Script>();
+        if (myFootball != null)
+        {
+            myFootball.Kick();
+        }
     }
 }
