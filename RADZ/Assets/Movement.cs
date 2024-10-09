@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public GameObject snowBallCloneTemplate;
     Animator animator;
     // Start is called before the first frame update
     void Start()
@@ -48,8 +49,13 @@ public class Movement : MonoBehaviour
             transform.position -= transform.right * Time.deltaTime;
             animator.SetBool("isRunning", true);
         }
-        
-       
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameObject newSnowballG0 = Instantiate(snowBallCloneTemplate, transform.position + transform.forward, Quaternion.identity);
+            SnowballPhysics myNewSnowball = newSnowballG0.GetComponent<SnowballPhysics>();
+            myNewSnowball.throwSnowball(transform);
+        }
         
     }
     private void OnCollisionEnter(Collision collision)
